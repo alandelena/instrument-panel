@@ -17,6 +17,7 @@ g++ -lwiringPi -lpthread -lallegro -lallegro_image -lallegro_font \
     instruments/egt.cpp \
     instruments/fuel.cpp \
     instruments/hi.cpp \
+    instruments/manPress.cpp \
     instruments/nav.cpp \
     instruments/oil.cpp \
     instruments/radCom.cpp \

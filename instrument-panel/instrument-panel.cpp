@@ -80,6 +80,7 @@
 #include "oil.h"
 #include "vac.h"
 #include "nav.h"
+#include "manPress.h"
 
 #include "learjet/adiLearjet.h"
 #include "savageCub/asiSavageCub.h"
@@ -90,7 +91,7 @@
 const bool HaveHardwareKnobs = true;
 const double FPS = 30.0;
 const bool Debug = false;
-const bool UseOpenGL_ES3 = true;
+const bool UseOpenGL_ES3 = false;
 
 struct globalVars globals;
 
@@ -547,6 +548,10 @@ void addInstruments()
 
     if (globals.simVars->isEnabled("Nav")) {
         instruments.push_back(new nav(50, 1000, 600));
+    }
+
+    if (globals.simVars->isEnabled("Manifold")) {
+        instruments.push_back(new manPress(1500, 750, 300));
     }
 
     if (globals.simVars->isEnabled("ADI Learjet")) {
