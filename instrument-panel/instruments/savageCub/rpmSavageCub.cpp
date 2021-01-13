@@ -156,7 +156,7 @@ void rpmSavageCub::update()
     digit4 = (int)simVars->rpmElapsedTime % 10;
     digit5 = (int)(simVars->rpmElapsedTime * 10) % 10;
 
-    // The dial's range is 8000 RPM over an arc of 290 degrees; the scale of the arc is uniform
+    // The dial's range is 7000 RPM over an arc of 290 degrees; the scale of the arc is uniform
     angle = (290 * simVars->rpmEngine / 7000) - 145;
 }
 
