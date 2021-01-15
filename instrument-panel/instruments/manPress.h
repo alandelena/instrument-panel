@@ -15,7 +15,7 @@ private:
     double angle;
 
 public:
-    manPress(int xPos, int yPos, int size);
+    manPress(int xPos, int yPos, int size, const char* parentName = NULL);
     void render();
     void update();
 

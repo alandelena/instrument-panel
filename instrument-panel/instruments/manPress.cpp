@@ -3,9 +3,14 @@
 #include <math.h>
 #include "manPress.h"
 
-manPress::manPress(int xPos, int yPos, int size) : instrument(xPos, yPos, size)
+manPress::manPress(int xPos, int yPos, int size, const char* parentName) : instrument(xPos, yPos, size)
 {
-    setName("Manifold");
+    if (parentName) {
+        setName(parentName);
+    }
+    else {
+        setName("Manifold Pressure");
+    }
     addVars();
     simVars = &globals.simVars->simVars;
     resize();
@@ -111,9 +116,10 @@ void manPress::update()
         size = settings[2];
         resize();
     }
-
+    
     // Calculate values
-    angle = pow(simVars->rpmPercent, 0.998) * 2.45 - 145;
+    // Gauge values are 10-35
+    angle = 204 * ((simVars->engineManifoldPressure - 10) / 25) - 102;
 }
 
 /// <summary>
@@ -121,7 +127,5 @@ void manPress::update()
 /// </summary>
 void manPress::addVars()
 {
-    //~ globals.simVars->addVar(name, "General Eng Rpm:1", false, 1, 0);
-    //~ globals.simVars->addVar(name, "Eng Rpm Animation Percent:1", false, 1, 0);
-    //~ globals.simVars->addVar(name, "General Eng Elapsed Time:1", false, 1, 0);
+    globals.simVars->addVar(name, "Eng Manifold Pressure:1", false, 1, 0);
 }
