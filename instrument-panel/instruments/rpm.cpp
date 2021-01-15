@@ -167,14 +167,12 @@ void rpm::update()
         if ((int)simVars->engineType == 0 && simVars->engineMaxRpm > 5000) {
             customInstrument = new rpmSavageCub(xPos, yPos, size, name);
         }
-        // Test for Jet (1) and Turbine (5) engines
-        else if ((int)simVars->engineType == 1 || (int)simVars->engineType == 5) {
+        // Test for jet engines
+        else if ((int)simVars->engineType == 1) {
+            // N1 percent
             customInstrument = new rpmPercent(xPos, yPos, size, name);
         }
-        // Otherwise, use this standard RPM gauge is for a piston engine with a 
-        // typical red line at 2700 RPM. This gauge has a max of 3500 RPM.
-        // This gauge is also used with the DA40 and and DA62 aircraft that
-        // use a higher reving engine but display prop RPM in their panel.
+        // Otherwise, use this prop RPM gauge for a piston engine and turboprops
     }
 
     if (customInstrument) {
