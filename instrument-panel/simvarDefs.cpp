@@ -94,18 +94,23 @@ const char* SimVarDefs[][2] = {
     { "General Eng Oil Temperature:1", "fahrenheit" },
     { "General Eng Oil Pressure:1", "psi" },
     { "General Eng Exhaust Gas Temperature:1", "celsius" },
+    { "Turb Eng ITT:1", "celsius" },
+    { "Turb Eng Max Torque Percent:1", "celsius" },
     { "Engine Type", "enum" },
     { "Max Rated Engine RPM", "rpm" },
     { "Turb Eng N1:1", "percent" },
+    { "Turb Eng N2:1", "percent" },
     { "Prop RPM:1", "rpm" },
     { "Eng Manifold Pressure:1", "inch of mercury" },
     { "Eng Fuel Flow GPH:1", "gallon per hour" },
+    { "Eng Fuel Flow PPH:1", "pounds per hour" },
     { "Suction Pressure", "inch of mercury" },
     { "Atc Id", "string64" },
     { "Atc Airline", "string64" },
     { "Atc Flight Number", "string8" },
     { "Atc Heavy", "bool" },
     { "Title", "string256" },
+    { "Max Gross Weight", "pounds" },
     { NULL, NULL }
 };
 

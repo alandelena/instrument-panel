@@ -96,18 +96,23 @@ struct SimVars
     double oilTemp = 75;
     double oilPressure = 50;
     double exhaustGasTemp = 0;
-    double engineType = 0;
+    double interstateTurbineTemp = 0;
+    double turbineTorquePercent = 0;
+    double engineType = 5;
     double engineMaxRpm = 0;
     double turbineEngineN1 = 0;
+    double turbineEngineN2 = 0;
     double propRpm = 0;
     double engineManifoldPressure = 0;
     double engineFuelFlow = 0;
+    double engineFuelFlowPph = 0;
     double suctionPressure = 1;
     char atcTailNumber[64] = "\0";
     char atcCallSign[64] = "\0";
     char atcFlightNumber[8] = "\0";
     double atcHeavy = 0;
     char aircraft[256] = "\0";
+    double maxGrossWeight = 0;
 };
 
 enum EVENT_ID {
