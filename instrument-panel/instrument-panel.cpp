@@ -80,7 +80,11 @@
 #include "oil.h"
 #include "vac.h"
 #include "nav.h"
-#include "manPress.h"
+#include "power.h"
+#include "engine.h"
+#include "n1Percent.h"
+#include "n2Percent.h"
+#include "rpmProp.h"
 
 #include "learjet/adiLearjet.h"
 #include "savageCub/asiSavageCub.h"
@@ -510,8 +514,8 @@ void addInstruments()
         instruments.push_back(new trimFlaps(700, 750, 300));
     }
 
-    if (globals.simVars->isEnabled("RPM")) {
-        instruments.push_back(new rpm(1100, 750, 300));
+    if (globals.simVars->isEnabled("Power")) {
+        instruments.push_back(new power(1100, 750, 300));
     }
 
     if (globals.simVars->isEnabled("ADF")) {
@@ -550,8 +554,20 @@ void addInstruments()
         instruments.push_back(new nav(50, 1000, 600));
     }
 
-    if (globals.simVars->isEnabled("Manifold")) {
-        instruments.push_back(new manPress(1500, 750, 300));
+    if (globals.simVars->isEnabled("Engine")) {
+        instruments.push_back(new engine(1500, 750, 300));
+    }
+
+    if (globals.simVars->isEnabled("N1 Percent")) {
+        instruments.push_back(new n1Percent(250, 500, 200));
+    }
+
+    if (globals.simVars->isEnabled("N2 Percent")) {
+        instruments.push_back(new n2Percent(250, 500, 200));
+    }
+
+    if (globals.simVars->isEnabled("RPM Prop")) {
+        instruments.push_back(new rpmProp(250, 750, 200));
     }
 
     if (globals.simVars->isEnabled("ADI Learjet")) {
