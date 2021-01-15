@@ -17,7 +17,7 @@ engine::engine(int xPos, int yPos, int size) : instrument(xPos, yPos, size)
     setName("Engine");
     addVars();
     simVars = &globals.simVars->simVars;
-    create();   
+    create();
     resize();
 }
 
@@ -29,12 +29,12 @@ void engine::create()
     loadedAircraft = globals.aircraft;
 
     // Load custom instrument for this aircraft
-    
+
     if (customInstrument) {
         delete customInstrument;
         customInstrument = NULL;
     }
-    
+
     if ((int)simVars->engineType == 0) {
         // Instantiate a manifold pressure gauge for piston engines
         customInstrument = new manPress(xPos, yPos, size, name);
@@ -43,15 +43,15 @@ void engine::create()
         if (simVars->maxGrossWeight > 100000) { // pounds
             // Instantiate a EGT gauge for airliners
             customInstrument = new egtJet(xPos, yPos, size, name);
-        } 
+        }
         else {
             // Instantiate a interstage turbine temp (ITT) gauge for lightweight jets
-            customInstrument = new itt(xPos, yPos, size, name);        
-        }    
+            customInstrument = new itt(xPos, yPos, size, name);
+        }
     }
     else if ((int)simVars->engineType == 5) {
         // Instantiate a interstage turbine temp (ITT) gauge for turboprops
-        customInstrument = new itt(xPos, yPos, size, name);        
+        customInstrument = new itt(xPos, yPos, size, name);
     }
 }
 
@@ -100,5 +100,8 @@ void engine::update()
 /// </summary>
 void engine::addVars()
 {
-    globals.simVars->addVar(name, "Max Gross Weight", false, 1, 0);
+    globals.simVars->addVar(name, "Eng Manifold Pressure:1", false, 1, 0);
+    globals.simVars->addVar(name, "Turb Eng ITT:1", false, 1, 0);
+    // Common vars declared in instrument-panel init()
+    //~ globals.simVars->addVar(name, "General Eng Exhaust Gas Temperature:1", false, 1, 0);
 }

@@ -10,8 +10,8 @@ itt::itt(int xPos, int yPos, int size, const char* parentName) : instrument(xPos
     }
     else {
         setName("ITT");
+        addVars();
     }
-    addVars();
     simVars = &globals.simVars->simVars;
     resize();
 }
@@ -116,7 +116,7 @@ void itt::update()
         size = settings[2];
         resize();
     }
-    
+
     // Calculate values
     double originDeg = 131;
     double arcDeg = 268;

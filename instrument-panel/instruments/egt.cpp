@@ -157,6 +157,6 @@ void egt::update()
 /// </summary>
 void egt::addVars()
 {
-    globals.simVars->addVar(name, "General Eng Exhaust Gas Temperature:1", false, 1, 0);
+    // Common: globals.simVars->addVar(name, "General Eng Exhaust Gas Temperature:1", false, 1, 0);
     globals.simVars->addVar(name, "Eng Fuel Flow GPH:1", false, 1, 0);
 }

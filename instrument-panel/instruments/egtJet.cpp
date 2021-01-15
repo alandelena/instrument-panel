@@ -6,12 +6,13 @@
 egtJet::egtJet(int xPos, int yPos, int size, const char* parentName) : instrument(xPos, yPos, size)
 {
     if (parentName) {
-        setName(parentName);
+        //~ setName(parentName);
+        strcpy(this->name, parentName);
     }
     else {
         setName("EGT Jet");
+        addVars();
     }
-    addVars();
     simVars = &globals.simVars->simVars;
     resize();
 }
@@ -116,7 +117,7 @@ void egtJet::update()
         size = settings[2];
         resize();
     }
-    
+
     // Calculate values
     double originDeg = 131;
     double arcDeg = 268;

@@ -11,8 +11,8 @@ torqPercent::torqPercent(int xPos, int yPos, int size, const char* parentName) :
     }
     else {
         setName("Torque Percent");
+        addVars();
     }
-    addVars();
     simVars = &globals.simVars->simVars;
     resize();
 }
@@ -145,7 +145,7 @@ void torqPercent::update()
     }
     else {
         // The remaining 40% arc (60-100%) starts at 135 degs and spans 180 degrees
-        angle = 135 + (181 * (simVars->turbineTorquePercent - 60) / 40.0);    
+        angle = 135 + (181 * (simVars->turbineTorquePercent - 60) / 40.0);
     }
 }
 

@@ -6,12 +6,13 @@
 rpmProp::rpmProp(int xPos, int yPos, int size, const char* parentName) : instrument(xPos, yPos, size)
 {
     if (parentName) {
-        setName(parentName);
+        //~ setName(parentName);
+        strcpy(this->name, parentName);
     }
     else {
         setName("RPM Prop");
+        addVars();
     }
-    addVars();
     simVars = &globals.simVars->simVars;
     resize();
 }
@@ -171,7 +172,7 @@ void rpmProp::update()
     double origin1000 = 63.0;   // angle from vertical to the 1000 RPM line
     double rangeTo1000 = 60.0;      // range in degrees for arc from 0 to 1000 RPM
     double range1kTo27k = 136.0;    // range in degrees for arc from 1000 to 2700 RPM
-    
+
     if (simVars->propRpm < 1000) {
         // Indicator angle between 0 and 1000 RPM
         angle = (rangeTo1000 * simVars->propRpm / 1000.0) - origin0;
@@ -191,5 +192,4 @@ void rpmProp::update()
 void rpmProp::addVars()
 {
     globals.simVars->addVar(name, "Prop RPM:1", false, 1, 0);
-    globals.simVars->addVar(name, "General Eng Elapsed Time:1", false, 1, 0);
 }

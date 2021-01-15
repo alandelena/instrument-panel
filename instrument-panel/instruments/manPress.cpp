@@ -6,12 +6,13 @@
 manPress::manPress(int xPos, int yPos, int size, const char* parentName) : instrument(xPos, yPos, size)
 {
     if (parentName) {
-        setName(parentName);
+        //~ setName(parentName);
+        strcpy(this->name, parentName);
     }
     else {
         setName("Manifold Pressure");
+        addVars();
     }
-    addVars();
     simVars = &globals.simVars->simVars;
     resize();
 }
@@ -116,7 +117,7 @@ void manPress::update()
         size = settings[2];
         resize();
     }
-    
+
     // Calculate values
     // Gauge values are 10-35
     angle = 204 * ((simVars->engineManifoldPressure - 10) / 25) - 102;

@@ -1,10 +1,10 @@
 /*
  * Flight Simulator Instrument Panel
  * Copyright (c) 2020 Scott Vincent
- * 
+ *
  * This program was heavily inspired by Dave Ault and contains original artwork
  * by him.
- * 
+ *
  *    http://www.learjet45chimera.co.uk/
  *    https://hangar45.net/hangar-45-forum/topic/standby-gauge-software-by-dave-ault
  *
@@ -17,9 +17,9 @@
  *     cd allegro5/build
  *     cmake .. -DCMAKE_BUILD_TYPE=Release
  *     make && sudo make install
- * 
+ *
  * KEYS
- * 
+ *
  * p ........ Adjust position and size of individual instruments.
  * v ........ Adjust FlightSim variables. Simulates changes even if no
  *            FlightSim connected.
@@ -28,16 +28,16 @@
  * s ........ Enable/disable shadows on instruments. Shadows give a more
  *            realistic 3D look.
  * Esc ...... Quit the program.
- * 
+ *
  * To make adjustments use the arrow keys. Up / down arrows select the
  * previous or next setting and left / right arrows change the value.
  * You can also use numpad left / right arrows to make larger adjustments.
- * 
+ *
  * Individual instruments can be shown or hidden by setting Enabled to
  * true or false in the settings file:
- * 
+ *
  *   settings/instrument-panel.json
- * 
+ *
  * On Raspberry Pi you can configure hardware Rotary Encoders for each
  * instrument. Each rotary encoder is connected to two BCM GPIO pins
  * (+ ground centre pin). See individual instruments for pins used. Not
@@ -260,6 +260,10 @@ void addCommon()
 {
     // globals.simVars->addVar("Common", "Electrics", true, 1, 1);
     // globals.simVars->addVar("Common", "Avionics", true, 1, 1);
+    globals.simVars->addVar("Common", "Engine Type", false, 1, 1);
+    globals.simVars->addVar("Common", "Max Gross Weight", false, 1, 0);
+    globals.simVars->addVar("Common", "General Eng Exhaust Gas Temperature:1", false, 1, 0);
+
 }
 
 /// <summary>
@@ -331,7 +335,7 @@ void switchMonitor()
 }
 
 /// <summary>
-/// Try to show any messages on the annunciator display 
+/// Try to show any messages on the annunciator display
 /// </summary>
 void getMessagePos(int *x, int *y, int *width)
 {
@@ -512,6 +516,10 @@ void addInstruments()
 
     if (globals.simVars->isEnabled("Trim Flaps")) {
         instruments.push_back(new trimFlaps(700, 750, 300));
+    }
+
+    if (globals.simVars->isEnabled("RPM")) {
+        instruments.push_back(new rpm(1100, 750, 300));
     }
 
     if (globals.simVars->isEnabled("Power")) {

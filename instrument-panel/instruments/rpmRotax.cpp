@@ -6,12 +6,13 @@
 rpmRotax::rpmRotax(int xPos, int yPos, int size, const char* parentName) : instrument(xPos, yPos, size)
 {
     if (parentName) {
-        setName(parentName);
+        //~ setName(parentName);
+        strcpy(this->name, parentName);
     }
     else {
         setName("RPM Rotax");
+        addVars();
     }
-    addVars();
     simVars = &globals.simVars->simVars;
     resize();
 }

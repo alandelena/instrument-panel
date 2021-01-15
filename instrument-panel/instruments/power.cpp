@@ -19,7 +19,7 @@ power::power(int xPos, int yPos, int size) : instrument(xPos, yPos, size)
     setName("Power");
     addVars();
     simVars = &globals.simVars->simVars;
-    create();   
+    create();
     resize();
 }
 
@@ -31,16 +31,16 @@ void power::create()
     loadedAircraft = globals.aircraft;
 
     // Load custom instrument for this aircraft
-    
+
     if (customInstrument) {
         delete customInstrument;
         customInstrument = NULL;
     }
-    
+
     if ((int)simVars->engineType == 0) {
         // Test for high-reving Rotax piston engine (e.g., Savage Cub, Shock Ultra, et al)
         if ((int)simVars->engineType == 0 && simVars->engineMaxRpm > 5000) {
-            // Instantiate an engine RPM gauge 
+            // Instantiate an engine RPM gauge
             customInstrument = new rpmRotax(xPos, yPos, size, name);
         }
         else {
@@ -103,5 +103,9 @@ void power::update()
 /// </summary>
 void power::addVars()
 {
-    globals.simVars->addVar(name, "Engine Type", false, 1, 0);
+    globals.simVars->addVar(name, "General Eng Rpm:1", false, 1, 0);
+    globals.simVars->addVar(name, "Turb Eng N1:1", false, 1, 0);
+    globals.simVars->addVar(name, "Prop RPM:1", false, 1, 0);
+    globals.simVars->addVar(name, "Turb Eng Max Torque Percent:1", false, 1, 0);
+    globals.simVars->addVar(name, "General Eng Elapsed Time:1", false, 1, 0);
 }

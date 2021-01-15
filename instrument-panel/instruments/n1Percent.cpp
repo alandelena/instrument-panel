@@ -6,13 +6,13 @@
 n1Percent::n1Percent(int xPos, int yPos, int size, const char* parentName) : instrument(xPos, yPos, size)
 {
     if (parentName) {
-        // Use position, size and vars from parent
-        setName(parentName);
+        //~ setName(parentName);
+        strcpy(this->name, parentName);
     }
     else {
         setName("N1 Percent");
+        addVars();
     }
-    addVars();
     simVars = &globals.simVars->simVars;
     resize();
 }
@@ -151,7 +151,7 @@ void n1Percent::update()
     }
     else {
         // The remaining 40% arc (60-100%) starts at 135 degs and spans 180 degrees
-        angle = 135 + (181 * (simVars->turbineEngineN1 - 60) / 40.0);    
+        angle = 135 + (181 * (simVars->turbineEngineN1 - 60) / 40.0);
     }
 }
 

@@ -60,13 +60,13 @@
     "Position Y": 676,
     "Size": 280
   },
-  "RPM": {
+  "Power": {
     "Enabled": true,
     "Position X": 1222,
     "Position Y": 669,
     "Size": 284
   },
-  "Rad Com": {
+  "Engine": {
     "Enabled": true,
     "Position X": 1549,
     "Position Y": 665,
@@ -130,6 +130,21 @@
     "Enabled": false
   },
   "XPDR Savage Cub": {
+    "Enabled": false
+  },
+  "RPM": {
+    "Enabled": false
+  },
+  "Rad Com": {
+    "Enabled": false
+  },
+  "N1 Percent": {
+    "Enabled": false
+  },
+  "N2 Percent": {
+    "Enabled": false
+  },
+  "RPM Prop": {
     "Enabled": false
   }
 }
