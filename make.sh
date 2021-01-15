@@ -15,15 +15,24 @@ g++ -lwiringPi -lpthread -lallegro -lallegro_image -lallegro_font \
     instruments/asi.cpp \
     instruments/digitalClock.cpp \
     instruments/egt.cpp \
+    instruments/egtJet.cpp \
+    instruments/engine.cpp \
     instruments/fuel.cpp \
     instruments/hi.cpp \
+    instruments/itt.cpp \
     instruments/manPress.cpp \
     instruments/nav.cpp \
+    instruments/n1Percent.cpp \
+    instruments/n2Percent.cpp \
     instruments/oil.cpp \
+    instruments/power.cpp \
     instruments/radCom.cpp \
     instruments/rpm.cpp \
     instruments/rpmPercent.cpp \
+    instruments/rpmProp.cpp \
+    instruments/rpmRotax.cpp \
     instruments/tc.cpp \
+    instruments/torqPercent.cpp \
     instruments/trimFlaps.cpp \
     instruments/vac.cpp \
     instruments/vor1.cpp \
@@ -39,4 +48,4 @@ g++ -lwiringPi -lpthread -lallegro -lallegro_image -lallegro_font \
     instruments/savageCub/xpdrSavageCub.cpp \
     || exit
 echo Done
-echo Run with: ./run.sh
+echo Run with: ./run.sh [settings-file]
